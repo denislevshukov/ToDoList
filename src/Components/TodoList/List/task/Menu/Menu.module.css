@@ -1,0 +1,15 @@
+.container {
+    padding-top: 20px;
+    height: 30px;
+    width: 1000px;
+    border-top: 1px solid black;
+    margin-top: 20px;
+    display: flex;
+}
+
+.settingsBlock{
+    width: 100px;
+    margin-right: 20px;
+    text-align: center;
+    border: 1px solid green;
+}
