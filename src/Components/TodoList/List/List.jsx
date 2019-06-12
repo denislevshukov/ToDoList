@@ -2,39 +2,48 @@ import React from 'react'
 import Task from './task/Task';
 import style from './List.module.css'
 import FinishedTask from './FinishedTask/FinishedTask';
+import EditInput from './EditInput/EditInput';
+
+
 
 export default function List(props) {
 
-    function updateData(value) {
-        props.updateFinishData(value);
-    }
-
-    const list = props.tasks.map((item, index) => {
+    const list = props.store.taskInProgress.map((item, index) => {
         let objTask = {
             key: index,
             tTask: item
         }
-        return <Task updateData={updateData} key={index} task={objTask} />
+        return (
+            <div>
+                {props.store.isOpenEditMenu.state && (props.store.isOpenEditMenu.id === index) ?
+                    <EditInput key={index} store={props.store} id={index} /> :
+                    <Task key={index} store={props.store} task={objTask} />}
+            </div>)
     });
 
-    const finishedList = props.finishedTasks.map((item, index) => {
+    const finishedList = props.store.taskFinished.map((item, index) => {
         let objTask = {
             key: index,
             tTask: item
         }
+        return (
+            <div>
+                <FinishedTask key={index} store={props.store} task={objTask} />
+            </div>
 
-        return <FinishedTask key={index} task={objTask} />
+        )
     });
 
     return (
         <div className={style.container}>
             {list}
-            <div className={style.FinishedTask} ><p>
-                Finished Tasks
-                </p></div>
+            {props.store.taskFinished.length > 0 && <div className={style.FinishedTask} >
+                <p>
+                    Finished Tasks
+                </p>
+            </div>}
+
             {finishedList}
-
-
         </div>
     )
 }

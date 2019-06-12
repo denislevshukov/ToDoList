@@ -4,7 +4,7 @@ import style from './Checkbox.module.css'
 export default class Checkbox extends React.Component {
 
     handleChange = event => {
-        this.props.updateData(event.target.name);
+        this.props.store.finishTask(event.target.id);
         event.target.checked = false;
     }
 

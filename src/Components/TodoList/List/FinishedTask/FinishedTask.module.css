@@ -32,8 +32,8 @@
     text-decoration: line-through;
 }
 
-.settingIcon {
-    background-image: url(../../../../img/settings.png);
+.removeIcon {
+    background-image: url(../../../../img/trash-can.png);
     background-size: cover;
     width: 20px;
     height: 20px;

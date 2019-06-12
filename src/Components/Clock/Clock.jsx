@@ -1,12 +1,7 @@
 import React from 'react'
-
 import c from './Clock.module.css'
 import Time from './Time/Time';
 import Day from './Date/Day';
-//import Date from './Date/Date';
-
-
-
 
 export default class Clock extends React.Component {
     constructor(props) {
@@ -18,7 +13,7 @@ export default class Clock extends React.Component {
 
     componentDidMount() {
         this.intervalID = setInterval(
-            () => this.tick(), 
+            () => this.tick(),
             1000
         );
     }
@@ -34,13 +29,13 @@ export default class Clock extends React.Component {
     }
     render() {
         return (
-            <div className = {c.clock}>
-                <Day date={this.state.date}  />
+            <div className={c.clock}>
+                <Day date={this.state.date} />
                 <Time date={this.state.date} />
             </div>
         )
-    
 
 
-}
+
+    }
 }

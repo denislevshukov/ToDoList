@@ -1,16 +1,26 @@
 import React from 'react';
 import './App.css';
 import Clock from './Components/Clock/Clock'
-import ToDoList from './Components/TodoList/ToDoList';
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './Store/reducers'
+import ToDoListContainer from './Components/TodoList/ToDoListContainer';
 
-class App extends React.Component {
+
+const store = createStore(rootReducer);
+
+export default class App extends React.Component {
   render() {
     return (
-      <div>
-        <Clock />
-        <ToDoList />
-      </div>
+      <Provider store={store}>
+        <div>
+          <Clock />
+          <ToDoListContainer />
+        </div>
+      </Provider>
     );
   }
 }
-export default App;
+
+
+
